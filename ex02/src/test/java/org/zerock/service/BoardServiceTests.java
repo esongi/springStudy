@@ -30,7 +30,7 @@ public class BoardServiceTests {
 		assertNotNull(service);
 	}
 
-	// @Test
+	@Test
 	public void testRegister() {
 		BoardVO board = new BoardVO();
 		board.setTitle("새로 작성하는 글");
@@ -49,19 +49,19 @@ public class BoardServiceTests {
 		service.getList(new Criteria(2, 10)).forEach(board -> log.info(board));
 	}
 
-	// @Test
+	@Test
 	public void testGet() {
 		log.info(service.get(1L));
 	}
 
-	// @Test
+	@Test
 	public void testDelete() {
 
 		// 게시물 번호의 존재 여부를 확인하고 테스트
 		log.info("REMOVE RESULT: " + service.remove(2L));
 	}
 
-	// @Test
+	@Test
 	public void testUpdate() {
 		BoardVO board = service.get(1L);
 

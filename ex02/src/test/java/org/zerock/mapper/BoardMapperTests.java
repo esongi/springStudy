@@ -28,7 +28,7 @@ public class BoardMapperTests {
 		mapper.getList().forEach(board -> log.info(board));
 	}
 
-	// @Test
+	@Test
 	public void testInsert() {
 		BoardVO board = new BoardVO();
 		board.setTitle("새로 작성하는 글");
@@ -40,7 +40,7 @@ public class BoardMapperTests {
 		log.info(board);
 	}
 
-	// @Test
+	@Test
 	public void testInsertSelectKey() {
 		BoardVO board = new BoardVO();
 		board.setTitle("새로 작성하는 글 select key");
@@ -52,7 +52,7 @@ public class BoardMapperTests {
 		log.info(board);
 	}
 
-	// @Test
+	@Test
 	public void testRead() {
 
 		// 존재하는 게시물 번호로 테스트
@@ -61,13 +61,13 @@ public class BoardMapperTests {
 		log.info(board);
 	}
 
-	// @Test
+	@Test
 	public void testDelete() {
 
 		log.info("DELETE COUNT: " + mapper.delete(5L));
 	}
 
-	// @Test
+	@Test
 	public void testUpdate() {
 
 		BoardVO board = new BoardVO();
@@ -87,9 +87,18 @@ public class BoardMapperTests {
 
 		// 10개씩 3페이지
 		cri.setPageNum(3);
-		cri.setAmount(10); 
+		cri.setAmount(10);
 
 		List<BoardVO> list = mapper.getListWithPaging(cri);
 		list.forEach(board -> log.info(board.getBno()));
+	}
+
+	@Test
+	public void testSearch() {
+		Criteria cri = new Criteria();
+		cri.setKeyword("새로");
+		cri.setType("TC");
+		List<BoardVO> list = mapper.getListWithPaging(cri);
+		list.forEach(board -> log.info(board));
 	}
 }
